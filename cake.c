@@ -64,7 +64,7 @@ long CALLBACK WndProc(HWND hwnd, UINT iMessage, WPARAM wParam, LONG lParam)
     static DWORD clrCandle[] = { RGB(0xFF, 0, 0),
                                  RGB(0, 0xFF, 0),
                                  RGB(0, 0, 0xFF) };
-    static FARPROC lpSettingsProc;
+    static DLGPROC lpSettingsProc;
 
     static HBITMAP hbmFlame[3];
     static int iTextColor;
@@ -78,7 +78,7 @@ long CALLBACK WndProc(HWND hwnd, UINT iMessage, WPARAM wParam, LONG lParam)
     switch (iMessage)
     {
     case WM_CREATE:
-        lpSettingsProc = MakeProcInstance((FARPROC)SettingsProc, hInst);
+        lpSettingsProc = SettingsProc;
 
         hdc = GetDC(hwnd);
         for (i = 0; i < 3; i++)
