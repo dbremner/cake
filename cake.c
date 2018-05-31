@@ -20,7 +20,6 @@ void DisplayText(HDC, POINT, POINT, int);
 
 int CALLBACK WinMain(HINSTANCE hInstance, HINSTANCE /*hPrevInstance*/, LPSTR /*lpszCmdLine*/, int /*nCmdShow*/)
 {
-    HWND     hwnd;
     MSG      msg;
     WNDCLASS wndclass;
 
@@ -40,7 +39,7 @@ int CALLBACK WinMain(HINSTANCE hInstance, HINSTANCE /*hPrevInstance*/, LPSTR /*l
     if (!RegisterClass(&wndclass))
         return FALSE;
 
-    hwnd = CreateWindow(szAppName, "Birthday Cake",
+    HWND hwnd = CreateWindow(szAppName, "Birthday Cake",
         WS_TILEDWINDOW, 0, 0, 0, 0,
         nullptr, nullptr, hInstance, nullptr);
 
@@ -68,7 +67,6 @@ LRESULT CALLBACK WndProc(HWND hwnd, UINT iMessage, WPARAM wParam, LPARAM lParam)
     static HBITMAP hbmFlame[3];
     static int iTextColor;
 
-    HPEN        hpen;
     HDC hdc;
     HDC hdcMem;
     int         i;
@@ -114,6 +112,7 @@ LRESULT CALLBACK WndProc(HWND hwnd, UINT iMessage, WPARAM wParam, LPARAM lParam)
         break;
 
     case WM_PAINT:
+    {       
         hdc = BeginPaint(hwnd, &ps);
 
         SelectObject(hdc, (HANDLE)CreateSolidBrush(clrIcing));
@@ -121,7 +120,7 @@ LRESULT CALLBACK WndProc(HWND hwnd, UINT iMessage, WPARAM wParam, LPARAM lParam)
         Ellipse(hdc, pt1.x, pt2.y - ht / 2,
             pt2.x, pt2.y + ht / 2);
 
-        hpen = (HPEN)SelectObject(hdc, GetStockObject(NULL_PEN));
+        HPEN hpen = (HPEN)SelectObject(hdc, GetStockObject(NULL_PEN));
 
         Rectangle(hdc, pt1.x, pt1.y,
             pt2.x, pt2.y);
@@ -157,6 +156,7 @@ LRESULT CALLBACK WndProc(HWND hwnd, UINT iMessage, WPARAM wParam, LPARAM lParam)
 
         EndPaint(hwnd, &ps);
         break;
+    }
 
     case WM_TIMER:
         hdc = GetDC(hwnd);
