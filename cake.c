@@ -68,10 +68,10 @@ LRESULT CALLBACK WndProc(HWND hwnd, UINT iMessage, WPARAM wParam, LPARAM lParam)
     static int iTextColor;
 
     HPEN        hpen;
-    HDC         hdc, hdcMem;
+    HDC hdc;
+    HDC hdcMem;
     int         i;
     PAINTSTRUCT ps;
-    RECT        rect;
 
     switch (iMessage)
     {
@@ -287,8 +287,11 @@ HBITMAP CreateFlameBitmap(HDC hdc, int i)
 
 void Firework(HDC hdc)
 {
-    static short xOrig, yOrig, iStep = 0;
-    static short x[8], y[8];
+    static short xOrig;
+    static short yOrig;
+    static short iStep = 0;
+    static short x[8];
+    static short y[8];
     static short xInc[8] = { -1, 0, 1, -1, 1, -1, 0, 1 };
     static short yInc[8] = { -1, -1, -1, 0, 0, 1, 1, 1 };
     static DWORD clr[8];
