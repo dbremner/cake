@@ -17,10 +17,7 @@ HBITMAP CreateFlameBitmap(HDC, int);
 void Firework(HDC);
 void DisplayText(HDC, POINT, POINT, short);
 
-int PASCAL WinMain (hInstance, hPrevInstance, lpszCmdLine, nCmdShow)
-HANDLE hInstance, hPrevInstance;
-LPSTR  lpszCmdLine;
-int    nCmdShow;
+int PASCAL WinMain (HANDLE hInstance, HANDLE hPrevInstance, LPSTR lpszCmdLine, int nCmdShow)
 {
      HWND     hwnd;
      MSG      msg;
@@ -61,11 +58,7 @@ int    nCmdShow;
 }
 
 
-long FAR PASCAL WndProc (hwnd, iMessage, wParam, lParam)
-HWND     hwnd;
-unsigned iMessage;
-WORD     wParam;
-LONG     lParam;
+long FAR PASCAL WndProc (HWND hwnd, UINT iMessage, WORD wParam, LONG lParam)
 {
      static DWORD clrIcing = RGB(0xFF, 0xC0, 0xC0);
      static POINT pt1 = {  40, 125 };
@@ -219,11 +212,7 @@ LONG     lParam;
      return 0L;
 }
 
-BOOL FAR PASCAL SettingsProc(hdlg, message, wParam, lParam)
-HWND hdlg;
-unsigned message;
-WORD wParam;
-LONG lParam;
+BOOL FAR PASCAL SettingsProc(HWND hdlg, UINT message, WORD wParam, LONG lParam)
 {
      switch (message)
      {
@@ -253,11 +242,7 @@ LONG lParam;
      return FALSE;
 }
 
-void Candle(hdc, clr, x, y)
-HDC hdc;
-DWORD clr;
-short x;
-short y;
+void Candle(HDC hdc, DWORD clr, short x, short y)
 {
      short cx = 10;
      short cy = 75;
@@ -276,9 +261,7 @@ short y;
      DeleteObject((HANDLE) hbr);
 }
 
-HBITMAP CreateFlameBitmap(hdc, i)
-HDC hdc;
-int i;
+HBITMAP CreateFlameBitmap(HDC hdc, int i)
 {
      RECT rect;
      static int pos[] = {0, 7, 15};
@@ -309,8 +292,7 @@ int i;
      return hbm;
 }
 
-void Firework(hdc) 
-HDC hdc;
+void Firework(HDC hdc)
 {
      static short xOrig, yOrig, iStep = 0;
      static short x[8], y[8];
@@ -352,11 +334,7 @@ HDC hdc;
      iStep++;
 }
 
-void DisplayText(hdc, pt1, pt2, ht)
-HDC hdc;
-POINT pt1;
-POINT pt2;
-short ht;
+void DisplayText(HDC hdc, POINT pt1, POINT pt2, short ht)
 {
      RECT rect;
      HFONT hFont = CreateFont(67, 0, 0, 0, 700, 0, 0, 0, OEM_CHARSET,  
