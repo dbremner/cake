@@ -69,14 +69,13 @@ LRESULT CALLBACK WndProc(HWND hwnd, UINT iMessage, WPARAM wParam, LPARAM lParam)
 
     HDC hdc;
     HDC hdcMem;
-    int         i;
     PAINTSTRUCT ps;
 
     switch (iMessage)
     {
     case WM_CREATE:
         hdc = GetDC(hwnd);
-        for (i = 0; i < 3; i++)
+        for (int i = 0; i < 3; i++)
             hbmFlame[i] = CreateFlameBitmap(hdc, i);
         ReleaseDC(hwnd, hdc);
 
@@ -141,7 +140,7 @@ LRESULT CALLBACK WndProc(HWND hwnd, UINT iMessage, WPARAM wParam, LPARAM lParam)
 
         DisplayText(hdc, pt1, pt2, ht);
 
-        for (i = 0; i < cCandles; i++)
+        for (int i = 0; i < cCandles; i++)
         {
             int x = ((cCandles - i) * pt1.x + (i + 1) * pt2.x) / (cCandles + 1);
             int y = pt1.y;
@@ -166,7 +165,7 @@ LRESULT CALLBACK WndProc(HWND hwnd, UINT iMessage, WPARAM wParam, LPARAM lParam)
         case 1:
             hdcMem = CreateCompatibleDC(hdc);
 
-            for (i = 0; i < cCandles; i++)
+            for (int i = 0; i < cCandles; i++)
             {
                 int x = ((cCandles - i) * pt1.x + (i + 1) * pt2.x) / (cCandles + 1);
                 int y = pt1.y;
@@ -295,7 +294,6 @@ void Firework(HDC hdc)
     static const int yInc[8] = { -1, -1, -1, 0, 0, 1, 1, 1 };
     static DWORD clr[8];
     static DWORD White = RGB(255, 255, 255);
-    int i;
 
     if (iStep % 6 == 0)
     {
@@ -303,7 +301,7 @@ void Firework(HDC hdc)
         yOrig = (rand() % 125);
         iStep = 0;
 
-        for (i = 0; i < 8; i++)
+        for (int i = 0; i < 8; i++)
         {
             x[i] = xOrig + xInc[i];
             y[i] = yOrig + yInc[i];
@@ -311,7 +309,7 @@ void Firework(HDC hdc)
     }
     else
     {
-        for (i = 0; i < 8; i++)
+        for (int i = 0; i < 8; i++)
         {
             SetPixel(hdc, x[i], y[i], clr[i]);
             x[i] += xInc[i] * iStep;
@@ -320,7 +318,7 @@ void Firework(HDC hdc)
     }
 
     if (iStep % 6 != 5)
-        for (i = 0; i < 8; i++)
+        for (int i = 0; i < 8; i++)
         {
             clr[i] = GetPixel(hdc, x[i], y[i]);
             SetPixel(hdc, x[i], y[i], White);
