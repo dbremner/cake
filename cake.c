@@ -5,8 +5,8 @@
 #include <windows.h>
 #include "cake.h"
 
-static char szAppName[] = "Cake";
-static char strCake[80] = "<text>";
+static TCHAR szAppName[] = "Cake";
+static TCHAR strCake[80] = "<text>";
 static int cCandles = 1;
 static BOOL bFlash = FALSE;
 static HINSTANCE hInst;
