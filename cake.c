@@ -10,8 +10,8 @@ int cCandles = 1;
 BOOL bFlash = FALSE;
 HANDLE hInst;
 
-long FAR PASCAL WndProc(HWND, unsigned, WORD, LONG);
-BOOL FAR PASCAL SettingsProc(HWND, unsigned, WORD, LONG);
+long PASCAL WndProc(HWND, unsigned, WORD, LONG);
+BOOL PASCAL SettingsProc(HWND, unsigned, WORD, LONG);
 void Candle(HDC, DWORD, short, short);
 HBITMAP CreateFlameBitmap(HDC, int);
 void Firework(HDC);
@@ -55,7 +55,7 @@ int PASCAL WinMain(HANDLE hInstance, HANDLE hPrevInstance, LPSTR lpszCmdLine, in
 }
 
 
-long FAR PASCAL WndProc(HWND hwnd, UINT iMessage, WORD wParam, LONG lParam)
+long PASCAL WndProc(HWND hwnd, UINT iMessage, WORD wParam, LONG lParam)
 {
     static DWORD clrIcing = RGB(0xFF, 0xC0, 0xC0);
     static POINT pt1 = { 40, 125 };
@@ -209,7 +209,7 @@ long FAR PASCAL WndProc(HWND hwnd, UINT iMessage, WORD wParam, LONG lParam)
     return 0L;
 }
 
-BOOL FAR PASCAL SettingsProc(HWND hdlg, UINT message, WORD wParam, LONG lParam)
+BOOL PASCAL SettingsProc(HWND hdlg, UINT message, WORD wParam, LONG lParam)
 {
     switch (message)
     {
