@@ -93,7 +93,7 @@ LRESULT CALLBACK WndProc(HWND hwnd, UINT iMessage, WPARAM wParam, LPARAM lParam)
             if (DialogBox(hInst, "SettingsBox", /* MAKEINTRESOURCE(IDD_SETTINGS), */
                 hwnd, SettingsProc))
             {
-                if (bFlash)
+                if (bFlash != FALSE)
                 {
                     SetTimer(hwnd, 2, 250, nullptr);
                     SetTimer(hwnd, 3, 1, nullptr);
@@ -195,7 +195,7 @@ LRESULT CALLBACK WndProc(HWND hwnd, UINT iMessage, WPARAM wParam, LPARAM lParam)
             break;
 
         case 2:
-            SetTextColor(hdc, iTextColor % 4 ? RGB(0, 0, 0) : RGB(255, 0, 0));
+            SetTextColor(hdc, (iTextColor % 4) != 0 ? RGB(0, 0, 0) : RGB(255, 0, 0));
             DisplayText(hdc, pt1, pt2, ht);
             iTextColor++;
             break;
