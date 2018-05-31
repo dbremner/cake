@@ -240,8 +240,6 @@ void Candle(HDC hdc, DWORD clr, int x, int y)
 {
     int cx = 10;
     int cy = 75;
-    int h = 4;
-    int wick = 15;
     HBRUSH hbr = CreateSolidBrush(clr);
 
     SelectObject(hdc, (HANDLE)hbr);
@@ -296,7 +294,6 @@ void Firework(HDC hdc)
     static const int xInc[8] = { -1, 0, 1, -1, 1, -1, 0, 1 };
     static const int yInc[8] = { -1, -1, -1, 0, 0, 1, 1, 1 };
     static DWORD clr[8];
-    static DWORD Black = RGB(0, 0, 0);
     static DWORD White = RGB(255, 255, 255);
     int i;
 
