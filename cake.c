@@ -25,7 +25,6 @@ int PASCAL WinMain (HANDLE hInstance, HANDLE hPrevInstance, LPSTR lpszCmdLine, i
 
      hInst = hInstance;
 
-     if (!hPrevInstance) 
      {
           wndclass.style         = CS_HREDRAW | CS_VREDRAW;
           wndclass.lpfnWndProc   = WndProc;
