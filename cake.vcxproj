@@ -115,6 +115,16 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="cake.c" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="cake.def" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="cake.h" />
+  </ItemGroup>
+  <ItemGroup>
+    <ResourceCompile Include="cake.rc" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
