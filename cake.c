@@ -257,10 +257,10 @@ void Candle(HDC hdc, DWORD clr, int x, int y)
 HBITMAP CreateFlameBitmap(HDC hdc, int i)
 {
     RECT rect;
-    static int pos[] = { 0, 7, 15 };
+    static const int pos[] = { 0, 7, 15 };
     static POINT apt[] = { 0, 0, 0, 15, 15, 15 };
 
-    static int pos2[] = { 3, 7, 11 };
+    static const int pos2[] = { 3, 7, 11 };
     static POINT aptInner[] = { 7, 10,  3, 17,   7, 20,   11, 17 };
     HBITMAP hbm = CreateCompatibleBitmap(hdc, 15, 25);
     HDC hdcMem = CreateCompatibleDC(hdc);
