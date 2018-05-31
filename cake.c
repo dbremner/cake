@@ -121,27 +121,27 @@ LRESULT CALLBACK WndProc(HWND hwnd, UINT iMessage, WPARAM wParam, LPARAM lParam)
 
         SelectObject(hdc, (HANDLE)CreateSolidBrush(clrIcing));
 
-        Ellipse(hdc, (short)pt1.x, (short)pt2.y - ht / 2,
-            (short)pt2.x, (short)pt2.y + ht / 2);
+        Ellipse(hdc, pt1.x, pt2.y - ht / 2,
+            pt2.x, pt2.y + ht / 2);
 
         hpen = (HPEN)SelectObject(hdc, GetStockObject(NULL_PEN));
 
-        Rectangle(hdc, (short)pt1.x, (short)pt1.y,
-            (short)pt2.x, (short)pt2.y);
+        Rectangle(hdc, pt1.x, pt1.y,
+            pt2.x, pt2.y);
 
         SelectObject(hdc, (HANDLE)hpen);
 
-        Ellipse(hdc, (short)pt1.x, (short)pt1.y - ht / 2,
-            (short)pt2.x, (short)pt1.y + ht / 2);
+        Ellipse(hdc, pt1.x, pt1.y - ht / 2,
+            pt2.x, pt1.y + ht / 2);
 
         DeleteObject(SelectObject(hdc, GetStockObject(BLACK_BRUSH)));
 
         SelectObject(hdc, GetStockObject(BLACK_PEN));
 
-        MoveToEx(hdc, (short)pt1.x, (short)pt1.y, NULL);
-        LineTo(hdc, (short)pt1.x, (short)pt2.y);
-        MoveToEx(hdc, (short)pt2.x, (short)pt1.y, NULL);
-        LineTo(hdc, (short)pt2.x, (short)pt2.y);
+        MoveToEx(hdc, pt1.x, pt1.y, NULL);
+        LineTo(hdc, pt1.x, pt2.y);
+        MoveToEx(hdc, pt2.x, pt1.y, NULL);
+        LineTo(hdc, pt2.x, pt2.y);
 
         DisplayText(hdc, pt1, pt2, ht);
 
