@@ -1,0 +1,10 @@
+NAME           CAKE
+DESCRIPTION    'Birthday Cake, programmed by Charles Petzold, November 1985'
+STUB           'WINSTUB.EXE'
+CODE           MOVEABLE
+DATA           MOVEABLE MULTIPLE
+HEAPSIZE       1024
+STACKSIZE      4096
+EXPORTS        WndProc
+               SettingsProc
+
