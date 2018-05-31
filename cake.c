@@ -8,7 +8,7 @@ char szAppName[] = "Cake";
 char strCake[80] = "<text>";
 int cCandles = 1;
 BOOL bFlash = FALSE;
-HANDLE hInst;
+HINSTANCE hInst;
 
 long CALLBACK WndProc(HWND, unsigned, WORD, LONG);
 BOOL CALLBACK SettingsProc(HWND, unsigned, WORD, LONG);
@@ -17,7 +17,7 @@ HBITMAP CreateFlameBitmap(HDC, int);
 void Firework(HDC);
 void DisplayText(HDC, POINT, POINT, short);
 
-int CALLBACK WinMain(HANDLE hInstance, HANDLE hPrevInstance, LPSTR lpszCmdLine, int nCmdShow)
+int CALLBACK WinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance, LPSTR lpszCmdLine, int nCmdShow)
 {
     HWND     hwnd;
     MSG      msg;
