@@ -10,8 +10,8 @@ int cCandles = 1;
 BOOL bFlash = FALSE;
 HINSTANCE hInst;
 
-long CALLBACK WndProc(HWND, unsigned, WORD, LONG);
-BOOL CALLBACK SettingsProc(HWND, unsigned, WORD, LONG);
+long CALLBACK WndProc(HWND, unsigned, WPARAM, LONG);
+BOOL CALLBACK SettingsProc(HWND, unsigned, WPARAM, LONG);
 void Candle(HDC, DWORD, short, short);
 HBITMAP CreateFlameBitmap(HDC, int);
 void Firework(HDC);
@@ -55,7 +55,7 @@ int CALLBACK WinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance, LPSTR lpszCmd
 }
 
 
-long CALLBACK WndProc(HWND hwnd, UINT iMessage, WORD wParam, LONG lParam)
+long CALLBACK WndProc(HWND hwnd, UINT iMessage, WPARAM wParam, LONG lParam)
 {
     static DWORD clrIcing = RGB(0xFF, 0xC0, 0xC0);
     static POINT pt1 = { 40, 125 };
@@ -209,14 +209,14 @@ long CALLBACK WndProc(HWND hwnd, UINT iMessage, WORD wParam, LONG lParam)
     return 0L;
 }
 
-BOOL CALLBACK SettingsProc(HWND hdlg, UINT message, WORD wParam, LONG lParam)
+BOOL CALLBACK SettingsProc(HWND hdlg, UINT message, WPARAM wParam, LONG lParam)
 {
     switch (message)
     {
     case WM_INITDIALOG:
         SetDlgItemText(hdlg, ID_CAKETEXT, strCake);
         SetDlgItemInt(hdlg, ID_NUMCANDLES, cCandles, FALSE);
-        SendDlgItemMessage(hdlg, ID_FLASH, BM_SETCHECK, (WORD)bFlash, 0L);
+        SendDlgItemMessage(hdlg, ID_FLASH, BM_SETCHECK, (WPARAM)bFlash, 0L);
         return TRUE;
 
     case WM_COMMAND:
