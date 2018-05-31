@@ -292,8 +292,8 @@ void Firework(HDC hdc)
     static int iStep = 0;
     static int x[8];
     static int y[8];
-    static int xInc[8] = { -1, 0, 1, -1, 1, -1, 0, 1 };
-    static int yInc[8] = { -1, -1, -1, 0, 0, 1, 1, 1 };
+    static const int xInc[8] = { -1, 0, 1, -1, 1, -1, 0, 1 };
+    static const int yInc[8] = { -1, -1, -1, 0, 0, 1, 1, 1 };
     static DWORD clr[8];
     static DWORD Black = RGB(0, 0, 0);
     static DWORD White = RGB(255, 255, 255);
