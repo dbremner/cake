@@ -12,10 +12,10 @@ static HINSTANCE hInst;
 
 LRESULT CALLBACK WndProc(HWND, unsigned, WPARAM, LPARAM);
 INT_PTR CALLBACK SettingsProc(HWND, unsigned, WPARAM, LPARAM);
-void Candle(HDC, DWORD, short, short);
+void Candle(HDC, DWORD, int, int);
 HBITMAP CreateFlameBitmap(HDC, int);
 void Firework(HDC);
-void DisplayText(HDC, POINT, POINT, short);
+void DisplayText(HDC, POINT, POINT, int);
 
 int CALLBACK WinMain(HINSTANCE hInstance, HINSTANCE /*hPrevInstance*/, LPSTR /*lpszCmdLine*/, int /*nCmdShow*/)
 {
@@ -60,7 +60,7 @@ LRESULT CALLBACK WndProc(HWND hwnd, UINT iMessage, WPARAM wParam, LPARAM lParam)
     static DWORD clrIcing = RGB(0xFF, 0xC0, 0xC0);
     static POINT pt1 = { 40, 125 };
     static POINT pt2 = { 600, 275 };
-    static short ht = 50;
+    static int ht = 50;
     static DWORD clrCandle[] = { RGB(0xFF, 0, 0),
                                  RGB(0, 0xFF, 0),
                                  RGB(0, 0, 0xFF) };
@@ -143,8 +143,8 @@ LRESULT CALLBACK WndProc(HWND hwnd, UINT iMessage, WPARAM wParam, LPARAM lParam)
 
         for (i = 0; i < cCandles; i++)
         {
-            short x = (short)((cCandles - i) * pt1.x + (i + 1) * pt2.x) / (cCandles + 1);
-            short y = (short)pt1.y;
+            int x = ((cCandles - i) * pt1.x + (i + 1) * pt2.x) / (cCandles + 1);
+            int y = pt1.y;
 
             if (i % 2 == 1)
                 y -= 5;
@@ -167,8 +167,8 @@ LRESULT CALLBACK WndProc(HWND hwnd, UINT iMessage, WPARAM wParam, LPARAM lParam)
 
             for (i = 0; i < cCandles; i++)
             {
-                short x = (short)((cCandles - i) * pt1.x + (i + 1) * pt2.x) / (cCandles + 1);
-                short y = (short)pt1.y;
+                int x = ((cCandles - i) * pt1.x + (i + 1) * pt2.x) / (cCandles + 1);
+                int y = pt1.y;
 
                 if (i % 2 == 1)
                     y -= 5;
@@ -235,12 +235,12 @@ INT_PTR CALLBACK SettingsProc(HWND hdlg, UINT message, WPARAM wParam, LPARAM /*l
     return FALSE;
 }
 
-void Candle(HDC hdc, DWORD clr, short x, short y)
+void Candle(HDC hdc, DWORD clr, int x, int y)
 {
-    short cx = 10;
-    short cy = 75;
-    short h = 4;
-    short wick = 15;
+    int cx = 10;
+    int cy = 75;
+    int h = 4;
+    int wick = 15;
     HBRUSH hbr = CreateSolidBrush(clr);
 
     SelectObject(hdc, (HANDLE)hbr);
@@ -287,13 +287,13 @@ HBITMAP CreateFlameBitmap(HDC hdc, int i)
 
 void Firework(HDC hdc)
 {
-    static short xOrig;
-    static short yOrig;
-    static short iStep = 0;
-    static short x[8];
-    static short y[8];
-    static short xInc[8] = { -1, 0, 1, -1, 1, -1, 0, 1 };
-    static short yInc[8] = { -1, -1, -1, 0, 0, 1, 1, 1 };
+    static int xOrig;
+    static int yOrig;
+    static int iStep = 0;
+    static int x[8];
+    static int y[8];
+    static int xInc[8] = { -1, 0, 1, -1, 1, -1, 0, 1 };
+    static int yInc[8] = { -1, -1, -1, 0, 0, 1, 1, 1 };
     static DWORD clr[8];
     static DWORD Black = RGB(0, 0, 0);
     static DWORD White = RGB(255, 255, 255);
@@ -301,8 +301,8 @@ void Firework(HDC hdc)
 
     if (iStep % 6 == 0)
     {
-        xOrig = (short)(rand() % 640);
-        yOrig = (short)(rand() % 125);
+        xOrig = (rand() % 640);
+        yOrig = (rand() % 125);
         iStep = 0;
 
         for (i = 0; i < 8; i++)
@@ -330,7 +330,7 @@ void Firework(HDC hdc)
     iStep++;
 }
 
-void DisplayText(HDC hdc, POINT pt1, POINT pt2, short ht)
+void DisplayText(HDC hdc, POINT pt1, POINT pt2, int ht)
 {
     RECT rect;
     HFONT hFont = CreateFont(67, 0, 0, 0, 700, 0, 0, 0, OEM_CHARSET,
