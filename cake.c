@@ -148,9 +148,9 @@ LONG     lParam;
               
           SelectObject(hdc, GetStockObject(BLACK_PEN));
 
-          MoveTo(hdc, (short) pt1.x, (short) pt1.y);
+          MoveToEx(hdc, (short) pt1.x, (short) pt1.y, NULL);
           LineTo(hdc, (short) pt1.x, (short) pt2.y);
-          MoveTo(hdc, (short) pt2.x, (short) pt1.y);
+          MoveToEx(hdc, (short) pt2.x, (short) pt1.y, NULL);
           LineTo(hdc, (short) pt2.x, (short) pt2.y);
 
           DisplayText(hdc, pt1, pt2, ht);
