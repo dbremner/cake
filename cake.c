@@ -2,7 +2,6 @@
    CAKE.C programmed by Charles Petzold, November 1985 
   -----------------------------------------------------*/
 #include <windows.h>
-#include <winexp.h>
 #include "cake.h"
 int rand();
 
