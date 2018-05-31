@@ -37,7 +37,9 @@ int CALLBACK WinMain(HINSTANCE hInstance, HINSTANCE /*hPrevInstance*/, LPSTR /*l
     wndclass.lpszClassName = szAppName;
 
     if (!RegisterClass(&wndclass))
+    {
         return FALSE;
+    }
 
     HWND hwnd = CreateWindow(szAppName, "Birthday Cake",
         WS_TILEDWINDOW, 0, 0, 0, 0,
@@ -76,7 +78,9 @@ LRESULT CALLBACK WndProc(HWND hwnd, UINT iMessage, WPARAM wParam, LPARAM lParam)
     case WM_CREATE:
         hdc = GetDC(hwnd);
         for (int i = 0; i < 3; i++)
+        {
             hbmFlame[i] = CreateFlameBitmap(hdc, i);
+        }
         ReleaseDC(hwnd, hdc);
 
         SetFocus(hwnd);
@@ -146,9 +150,13 @@ LRESULT CALLBACK WndProc(HWND hwnd, UINT iMessage, WPARAM wParam, LPARAM lParam)
             int y = pt1.y;
 
             if (i % 2 == 1)
+            {
                 y -= 5;
+            }
             else
+            {
                 y += 5;
+            }
 
             Candle(hdc, clrCandle[i % 3], x, y);
         }
@@ -171,9 +179,13 @@ LRESULT CALLBACK WndProc(HWND hwnd, UINT iMessage, WPARAM wParam, LPARAM lParam)
                 int y = pt1.y;
 
                 if (i % 2 == 1)
+                {
                     y -= 5;
+                }
                 else
+                {
                     y += 5;
+                }
 
                 SelectObject(hdcMem, (HANDLE)hbmFlame[rand() % 3]);
                 BitBlt(hdc, x - 7, y - 115, 15, 25, hdcMem, 0, 0, SRCCOPY);
@@ -256,10 +268,10 @@ HBITMAP CreateFlameBitmap(HDC hdc, int i)
 {
     RECT rect;
     static const int pos[] = { 0, 7, 15 };
-    static POINT apt[] = { 0, 0, 0, 15, 15, 15 };
+    static POINT apt[] = {{0, 0}, {0, 15}, {15, 15}};
 
     static const int pos2[] = { 3, 7, 11 };
-    static POINT aptInner[] = { 7, 10,  3, 17,   7, 20,   11, 17 };
+    static POINT aptInner[] = {{7, 10}, {3, 17}, {7, 20}, {11, 17}};
     HBITMAP hbm = CreateCompatibleBitmap(hdc, 15, 25);
     HDC hdcMem = CreateCompatibleDC(hdc);
     SelectObject(hdcMem, (HANDLE)hbm);
@@ -318,11 +330,13 @@ void Firework(HDC hdc)
     }
 
     if (iStep % 6 != 5)
+    {
         for (int i = 0; i < 8; i++)
         {
             clr[i] = GetPixel(hdc, x[i], y[i]);
             SetPixel(hdc, x[i], y[i], White);
         }
+    }
     iStep++;
 }
 
