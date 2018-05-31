@@ -30,8 +30,8 @@ int CALLBACK WinMain(HINSTANCE hInstance, HINSTANCE /*hPrevInstance*/, LPSTR /*l
     wndclass.cbClsExtra = 0;
     wndclass.cbWndExtra = 0;
     wndclass.hInstance = hInstance;
-    wndclass.hIcon = LoadIcon(NULL, IDI_APPLICATION);
-    wndclass.hCursor = LoadCursor(NULL, IDC_ARROW);
+    wndclass.hIcon = LoadIcon(nullptr, IDI_APPLICATION);
+    wndclass.hCursor = LoadCursor(nullptr, IDC_ARROW);
     wndclass.hbrBackground = (HBRUSH)GetStockObject(BLACK_BRUSH);
     wndclass.lpszMenuName = szAppName;
     wndclass.lpszClassName = szAppName;
@@ -41,12 +41,12 @@ int CALLBACK WinMain(HINSTANCE hInstance, HINSTANCE /*hPrevInstance*/, LPSTR /*l
 
     hwnd = CreateWindow(szAppName, "Birthday Cake",
         WS_TILEDWINDOW, 0, 0, 0, 0,
-        NULL, NULL, hInstance, NULL);
+        nullptr, nullptr, hInstance, nullptr);
 
     ShowWindow(hwnd, SHOW_FULLSCREEN);
     UpdateWindow(hwnd);
 
-    while (GetMessage(&msg, NULL, 0, 0))
+    while (GetMessage(&msg, nullptr, 0, 0))
     {
         TranslateMessage(&msg);
         DispatchMessage(&msg);
@@ -93,8 +93,8 @@ LRESULT CALLBACK WndProc(HWND hwnd, UINT iMessage, WPARAM wParam, LPARAM lParam)
             {
                 if (bFlash)
                 {
-                    SetTimer(hwnd, 2, 250, NULL);
-                    SetTimer(hwnd, 3, 1, NULL);
+                    SetTimer(hwnd, 2, 250, nullptr);
+                    SetTimer(hwnd, 3, 1, nullptr);
                 }
                 else
                 {
@@ -102,12 +102,12 @@ LRESULT CALLBACK WndProc(HWND hwnd, UINT iMessage, WPARAM wParam, LPARAM lParam)
                     KillTimer(hwnd, 3);
                 }
 
-                InvalidateRect(hwnd, NULL, TRUE);
+                InvalidateRect(hwnd, nullptr, TRUE);
             }
             break;
 
         case IDM_BURNING:
-            SetTimer(hwnd, 1, 1, NULL);
+            SetTimer(hwnd, 1, 1, nullptr);
             break;
         }
         break;
@@ -134,9 +134,9 @@ LRESULT CALLBACK WndProc(HWND hwnd, UINT iMessage, WPARAM wParam, LPARAM lParam)
 
         SelectObject(hdc, GetStockObject(BLACK_PEN));
 
-        MoveToEx(hdc, pt1.x, pt1.y, NULL);
+        MoveToEx(hdc, pt1.x, pt1.y, nullptr);
         LineTo(hdc, pt1.x, pt2.y);
-        MoveToEx(hdc, pt2.x, pt1.y, NULL);
+        MoveToEx(hdc, pt2.x, pt1.y, nullptr);
         LineTo(hdc, pt2.x, pt2.y);
 
         DisplayText(hdc, pt1, pt2, ht);
@@ -220,7 +220,7 @@ INT_PTR CALLBACK SettingsProc(HWND hdlg, UINT message, WPARAM wParam, LPARAM /*l
         {
         case IDOK:
             GetDlgItemText(hdlg, ID_CAKETEXT, strCake, sizeof(strCake) - 1);
-            cCandles = GetDlgItemInt(hdlg, ID_NUMCANDLES, NULL, FALSE);
+            cCandles = GetDlgItemInt(hdlg, ID_NUMCANDLES, nullptr, FALSE);
             bFlash = (BOOL)SendDlgItemMessage(hdlg, ID_FLASH, BM_GETCHECK, 0, 0L);
             EndDialog(hdlg, TRUE);
             return TRUE;
