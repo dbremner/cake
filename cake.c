@@ -3,7 +3,6 @@
   -----------------------------------------------------*/
 #include <windows.h>
 #include "cake.h"
-int rand();
 
 char szAppName [] = "Cake";
 char strCake[80] = "<text>";
