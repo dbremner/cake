@@ -146,7 +146,7 @@ LRESULT CALLBACK WndProc(HWND hwnd, UINT iMessage, WPARAM wParam, LPARAM lParam)
 
         for (int i = 0; i < cCandles; i++)
         {
-            int x = ((cCandles - i) * pt1.x + (i + 1) * pt2.x) / (cCandles + 1);
+            const int x = ((cCandles - i) * pt1.x + (i + 1) * pt2.x) / (cCandles + 1);
             int y = pt1.y;
 
             if (i % 2 == 1)
@@ -175,7 +175,7 @@ LRESULT CALLBACK WndProc(HWND hwnd, UINT iMessage, WPARAM wParam, LPARAM lParam)
 
             for (int i = 0; i < cCandles; i++)
             {
-                int x = ((cCandles - i) * pt1.x + (i + 1) * pt2.x) / (cCandles + 1);
+                const int x = ((cCandles - i) * pt1.x + (i + 1) * pt2.x) / (cCandles + 1);
                 int y = pt1.y;
 
                 if (i % 2 == 1)
@@ -249,8 +249,8 @@ INT_PTR CALLBACK SettingsProc(HWND hdlg, UINT message, WPARAM wParam, LPARAM /*l
 
 void Candle(HDC hdc, DWORD clr, int x, int y)
 {
-    int cx = 10;
-    int cy = 75;
+    const int cx = 10;
+    const int cy = 75;
     HBRUSH hbr = CreateSolidBrush(clr);
 
     SelectObject(hdc, (HANDLE)hbr);
