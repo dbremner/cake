@@ -1,6 +1,7 @@
 /*-----------------------------------------------------
    CAKE.C programmed by Charles Petzold, November 1985
   -----------------------------------------------------*/
+#include "stdafx.h"
 #include <windows.h>
 #include "cake.h"
 
