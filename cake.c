@@ -17,7 +17,7 @@ HBITMAP CreateFlameBitmap(HDC, int);
 void Firework(HDC);
 void DisplayText(HDC, POINT, POINT, short);
 
-int CALLBACK WinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance, LPSTR lpszCmdLine, int nCmdShow)
+int CALLBACK WinMain(HINSTANCE hInstance, HINSTANCE /*hPrevInstance*/, LPSTR /*lpszCmdLine*/, int /*nCmdShow*/)
 {
     HWND     hwnd;
     MSG      msg;
@@ -209,7 +209,7 @@ LRESULT CALLBACK WndProc(HWND hwnd, UINT iMessage, WPARAM wParam, LPARAM lParam)
     return 0L;
 }
 
-INT_PTR CALLBACK SettingsProc(HWND hdlg, UINT message, WPARAM wParam, LPARAM lParam)
+INT_PTR CALLBACK SettingsProc(HWND hdlg, UINT message, WPARAM wParam, LPARAM /*lParam*/)
 {
     switch (message)
     {
