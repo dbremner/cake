@@ -64,8 +64,6 @@ LRESULT CALLBACK WndProc(HWND hwnd, UINT iMessage, WPARAM wParam, LPARAM lParam)
     static DWORD clrCandle[] = { RGB(0xFF, 0, 0),
                                  RGB(0, 0xFF, 0),
                                  RGB(0, 0, 0xFF) };
-    static DLGPROC lpSettingsProc;
-
     static HBITMAP hbmFlame[3];
     static int iTextColor;
 
@@ -78,8 +76,6 @@ LRESULT CALLBACK WndProc(HWND hwnd, UINT iMessage, WPARAM wParam, LPARAM lParam)
     switch (iMessage)
     {
     case WM_CREATE:
-        lpSettingsProc = SettingsProc;
-
         hdc = GetDC(hwnd);
         for (i = 0; i < 3; i++)
             hbmFlame[i] = CreateFlameBitmap(hdc, i);
@@ -93,7 +89,7 @@ LRESULT CALLBACK WndProc(HWND hwnd, UINT iMessage, WPARAM wParam, LPARAM lParam)
         {
         case IDM_SETTINGS:
             if (DialogBox(hInst, "SettingsBox", /* MAKEINTRESOURCE(IDD_SETTINGS), */
-                hwnd, lpSettingsProc))
+                hwnd, SettingsProc))
             {
                 if (bFlash)
                 {
